@@ -1,0 +1,24 @@
+User-agent: *
+Allow: /
+
+# Private / auth routes — do not index
+Disallow: /login
+Disallow: /signup
+Disallow: /profile
+Disallow: /profile/
+Disallow: /classroom/settings
+Disallow: /classroom/settings/
+Disallow: /api/
+Disallow: /reset-password
+
+# Prevent indexing of query-string variants (avoid duplicate content)
+# FIX: removed invalid $ suffix — not standard robots.txt syntax
+Disallow: /*?*time=
+Disallow: /*?*mode=
+Disallow: /*?*ref=
+Disallow: /*.json
+
+# Sitemaps
+# FIX: removed sitemap-blog.xml reference (file does not exist yet)
+# Add back when blog content is published
+Sitemap: https://typeblaze.vercel.app/sitemap.xml

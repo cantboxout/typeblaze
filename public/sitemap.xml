@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- ── Core Pages ─────────────────────────────────────── -->
+  <url>
+    <loc>https://typeblaze.vercel.app/</loc>
+    <lastmod>2026-03-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://typeblaze.vercel.app/typing-test</loc>
+    <lastmod>2026-03-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <url>
+    <loc>https://typeblaze.vercel.app/games</loc>
+    <lastmod>2026-03-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://typeblaze.vercel.app/leaderboard</loc>
+    <lastmod>2026-03-16</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.75</priority>
+  </url>
+
+  <url>
+    <loc>https://typeblaze.vercel.app/classroom</loc>
+    <lastmod>2026-03-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://typeblaze.vercel.app/typing-certificate</loc>
+    <lastmod>2026-03-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- ── Game Mode Sub-Pages ────────────────────────────── -->
+  <url>
+    <loc>https://typeblaze.vercel.app/games/words</loc>
+    <lastmod>2026-03-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+
+  <url>
+    <loc>https://typeblaze.vercel.app/games/quotes</loc>
+    <lastmod>2026-03-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+
+  <url>
+    <loc>https://typeblaze.vercel.app/games/numbers</loc>
+    <lastmod>2026-03-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+
+  <url>
+    <loc>https://typeblaze.vercel.app/games/capitals</loc>
+    <lastmod>2026-03-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+
+  <url>
+    <loc>https://typeblaze.vercel.app/games/custom</loc>
+    <lastmod>2026-03-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+
+  <url>
+    <loc>https://typeblaze.vercel.app/games/code</loc>
+    <lastmod>2026-03-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+
+  <!-- ── Comparison / Landing Pages (SEO targets) ─────── -->
+  <url>
+    <loc>https://typeblaze.vercel.app/vs/monkeytype</loc>
+    <lastmod>2026-03-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+
+  <url>
+    <loc>https://typeblaze.vercel.app/vs/typing-com</loc>
+    <lastmod>2026-03-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+
+  <url>
+    <loc>https://typeblaze.vercel.app/for/teachers</loc>
+    <lastmod>2026-03-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://typeblaze.vercel.app/for/students</loc>
+    <lastmod>2026-03-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+
+  <!-- ── Static / Legal ─────────────────────────────────── -->
+  <url>
+    <loc>https://typeblaze.vercel.app/blog</loc>
+    <lastmod>2026-03-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.60</priority>
+  </url>
+
+  <url>
+    <loc>https://typeblaze.vercel.app/verify</loc>
+    <lastmod>2026-03-16</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.40</priority>
+  </url>
+
+  <url>
+    <loc>https://typeblaze.vercel.app/privacy</loc>
+    <lastmod>2026-03-16</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.20</priority>
+  </url>
+
+  <url>
+    <loc>https://typeblaze.vercel.app/terms</loc>
+    <lastmod>2026-03-16</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.20</priority>
+  </url>
+
+</urlset>

@@ -1,0 +1,129 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: 'Bricolage Grotesque', sans-serif;
+  --font-body: 'Outfit', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #04040E;
+  color: #F0F0FA;
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* SEO content article styles */
+.seo-content {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 48px 28px 80px;
+}
+
+.seo-content h1 {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 16px;
+  color: #F0F0FA;
+}
+
+.seo-content h2 {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 36px 0 12px;
+  color: #F0F0FA;
+}
+
+.seo-content h3 {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  margin: 24px 0 8px;
+  color: #FF6B1A;
+}
+
+.seo-content p {
+  font-size: 15px;
+  color: #9999BB;
+  line-height: 1.75;
+  font-weight: 300;
+  margin-bottom: 16px;
+}
+
+.seo-content .lead {
+  font-size: 17px;
+  color: #C0C0D0;
+  line-height: 1.7;
+  font-weight: 400;
+  margin-bottom: 28px;
+}
+
+.seo-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  font-size: 14px;
+}
+
+.seo-content th {
+  background: rgba(255,107,26,.1);
+  border: 1px solid rgba(255,107,26,.2);
+  padding: 10px 14px;
+  text-align: left;
+  color: #FF8A40;
+  font-weight: 600;
+}
+
+.seo-content td {
+  border: 1px solid rgba(255,255,255,.06);
+  padding: 10px 14px;
+  color: #9999BB;
+}
+
+.seo-content ul, .seo-content ol {
+  padding-left: 20px;
+  margin-bottom: 16px;
+}
+
+.seo-content li {
+  font-size: 15px;
+  color: #9999BB;
+  line-height: 1.7;
+  font-weight: 300;
+  margin-bottom: 6px;
+}
+
+.seo-content .cta-block {
+  background: linear-gradient(135deg, rgba(255,107,26,.1), rgba(255,107,26,.05));
+  border: 1px solid rgba(255,107,26,.25);
+  border-radius: 16px;
+  padding: 28px 32px;
+  margin-top: 40px;
+  text-align: center;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #2A1A0A; border-radius: 2px; }
+
+/* Selection */
+::selection { background: rgba(255,107,26,.2); color: #FF8A40; }

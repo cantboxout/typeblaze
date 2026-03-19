@@ -1,0 +1,197 @@
+// TypeBlaze — Prisma Schema
+// Run: npx prisma migrate dev --name init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ── Users ──────────────────────────────────────────────────────────────────
+model User {
+  id          String   @id @default(cuid())
+  name        String
+  displayName String
+  email       String   @unique
+  passwordHash String
+  role        Role     @default(STUDENT)
+  isActive    Boolean  @default(true)
+  emailVerified Boolean @default(false)
+  emailVerificationToken  String?
+  emailVerificationExpiry DateTime?
+  avatarUrl   String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  testResults       TestResult[]
+  certificates      Certificate[]
+  passwordResetTokens PasswordResetToken[]
+  classroomsOwned   Classroom[]    @relation("TeacherClassrooms")
+  classroomMembers  ClassroomMember[]
+  assignmentResults AssignmentResult[]
+  sessions          Session[]
+
+  @@index([email])
+}
+
+enum Role {
+  STUDENT
+  TEACHER
+  ADMIN
+}
+
+// ── Sessions ───────────────────────────────────────────────────────────────
+model Session {
+  id        String   @id @default(cuid())
+  userId    String
+  sessionId String   @unique
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([sessionId])
+}
+
+// ── Password Reset Tokens ─────────────────────────────────────────────────
+model PasswordResetToken {
+  id        String    @id @default(cuid())
+  token     String    @unique
+  userId    String
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime  @default(now())
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([token])
+  @@index([userId])
+}
+
+// ── Test Results ───────────────────────────────────────────────────────────
+model TestResult {
+  id           String   @id @default(cuid())
+  userId       String
+  wpm          Int
+  accuracy     Float
+  correctWords Int
+  incorrectWords Int
+  mode         TestMode
+  duration     Int      // seconds
+  startedAt    DateTime
+  completedAt  DateTime
+  createdAt    DateTime @default(now())
+
+  user         User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  certificate  Certificate?
+
+  @@index([userId])
+  @@index([wpm])
+  @@index([createdAt])
+}
+
+enum TestMode {
+  WORDS
+  QUOTES
+  NUMBERS
+  CAPITALS
+  CUSTOM
+  CODE
+}
+
+// ── Certificates ───────────────────────────────────────────────────────────
+model Certificate {
+  id           String   @id @default(cuid())
+  certId       String   @unique  // TB-XXXX-XXXX-XXXX format
+  userId       String
+  testResultId String   @unique
+  level        String   // Beginner | Intermediate | Advanced | Expert | Master
+  wpm          Int
+  accuracy     Float
+  issuedAt     DateTime @default(now())
+
+  user         User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  testResult   TestResult @relation(fields: [testResultId], references: [id])
+
+  @@index([certId])
+  @@index([userId])
+}
+
+// ── Classrooms ─────────────────────────────────────────────────────────────
+model Classroom {
+  id          String   @id @default(cuid())
+  name        String
+  code        String   @unique  // 6-char join code e.g. TB-7X92K
+  teacherId   String
+  gradeLevel  String?
+  description String?
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  teacher     User              @relation("TeacherClassrooms", fields: [teacherId], references: [id])
+  members     ClassroomMember[]
+  assignments Assignment[]
+
+  @@index([teacherId])
+  @@index([code])
+}
+
+model ClassroomMember {
+  id          String   @id @default(cuid())
+  classroomId String
+  userId      String
+  joinedAt    DateTime @default(now())
+
+  classroom   Classroom @relation(fields: [classroomId], references: [id], onDelete: Cascade)
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([classroomId, userId])
+  @@index([classroomId])
+  @@index([userId])
+}
+
+// ── Assignments ────────────────────────────────────────────────────────────
+model Assignment {
+  id           String    @id @default(cuid())
+  classroomId  String
+  title        String
+  mode         TestMode
+  targetWpm    Int?
+  targetAccuracy Float?
+  duration     Int       @default(60)
+  dueAt        DateTime?
+  customText   String?
+  status       AssignmentStatus @default(ACTIVE)
+  createdAt    DateTime  @default(now())
+
+  classroom    Classroom          @relation(fields: [classroomId], references: [id], onDelete: Cascade)
+  results      AssignmentResult[]
+
+  @@index([classroomId])
+}
+
+enum AssignmentStatus {
+  DRAFT
+  ACTIVE
+  ARCHIVED
+}
+
+model AssignmentResult {
+  id           String   @id @default(cuid())
+  assignmentId String
+  userId       String
+  wpm          Int
+  accuracy     Float
+  completedAt  DateTime @default(now())
+
+  assignment   Assignment @relation(fields: [assignmentId], references: [id], onDelete: Cascade)
+  user         User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([assignmentId, userId])
+  @@index([assignmentId])
+  @@index([userId])
+}
