@@ -62,7 +62,7 @@ export const POST = withErrorHandler(async (req: NextRequest) => {
   const { email, password } = validation.data;
 
   // ── 3. Account lockout check ───────────────────────────────────────────
-  const lockStatus = isAccountLocked(email);
+  const lockStatus = await isAccountLocked(email);
   if (lockStatus.locked) {
     logSecurityEvent("LOGIN_LOCKED", { email }, req);
     return NextResponse.json(
