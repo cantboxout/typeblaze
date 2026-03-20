@@ -119,7 +119,7 @@ export const TestResultSchema = z.object({
     .max(100)
     .transform((n) => Math.round(n * 10) / 10), // 1 decimal place
   mode: z.enum(["words", "quotes", "numbers", "capitals", "custom", "code"]),
-  duration: z.enum([15, 30, 60, 120]),
+  duration: z.union([z.literal(15), z.literal(30), z.literal(60), z.literal(120)]),
   correctWords: z.number().int().min(0).max(10000),
   incorrectWords: z.number().int().min(0).max(10000),
   // Client timestamp — validated server-side against actual test duration
