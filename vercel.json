@@ -1,7 +1,6 @@
 {
   "framework": "nextjs",
   "buildCommand": "npx prisma generate && next build",
-  "outputDirectory": ".next",
   "installCommand": "npm install",
   "regions": ["iad1"],
   "functions": {
@@ -9,7 +8,6 @@
     "src/app/api/auth/signup/route.ts":      { "maxDuration": 10 },
     "src/app/api/auth/forgot-password/route.ts": { "maxDuration": 10 },
     "src/app/api/auth/reset-password/route.ts":  { "maxDuration": 10 },
-    "src/app/api/certificates/route.ts":     { "maxDuration": 30 },
     "src/app/api/og/route.tsx":              { "maxDuration": 5 },
     "src/app/api/sitemap/route.ts":          { "maxDuration": 5 }
   },
