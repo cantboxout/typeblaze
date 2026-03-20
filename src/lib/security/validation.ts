@@ -177,7 +177,7 @@ export const CreateAssignmentSchema = z.object({
   mode: z.enum(["words", "quotes", "numbers", "capitals", "custom", "code"]),
   targetWpm: z.number().int().min(1).max(300).optional(),
   targetAccuracy: z.number().min(0).max(100).optional(),
-  duration: z.enum([15, 30, 60, 120]),
+  duration: z.union([z.literal(15), z.literal(30), z.literal(60), z.literal(120)]).default(60),
   dueAt: z.string().datetime({ offset: true }).optional(),
   customText: z.string().max(MAX_CUSTOM_TEXT).optional(),
 });
