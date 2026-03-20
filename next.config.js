@@ -63,7 +63,7 @@ const nextConfig = {
 
   // ── Experimental ────────────────────────────────────────────────────────
   experimental: {
-    optimizeCss: true,         // Inline critical CSS, defer the rest
+            // Inline critical CSS, defer the rest
     optimizePackageImports: ["lucide-react", "framer-motion"],
   },
 
