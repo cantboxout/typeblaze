@@ -58,7 +58,6 @@ export const POST = withErrorHandler(async (req: NextRequest) => {
     logSecurityEvent("INPUT_VALIDATION_FAILED", { endpoint: "/api/auth/login" }, req);
     return validationErrorResponse(validation.errors);
   }
-
   const { email, password } = validation.data;
 
   // ── 3. Account lockout check ───────────────────────────────────────────
@@ -94,7 +93,7 @@ export const POST = withErrorHandler(async (req: NextRequest) => {
   const passwordValid = await verifyPassword(password, hashToVerify);
 
   if (!user || !passwordValid) {
-    if (user) recordFailedLogin(email);
+    if (user) await recordFailedLogin(email);
     logSecurityEvent("LOGIN_FAILED", { email, reason: !user ? "user_not_found" : "wrong_password" }, req);
 
     // Generic error — do NOT distinguish "user not found" from "wrong password"
@@ -126,7 +125,7 @@ export const POST = withErrorHandler(async (req: NextRequest) => {
   }
 
   // ── 7. Clear failed attempt counter on success ─────────────────────────
-  clearFailedAttempts(email);
+  await clearFailedAttempts(email);
 
   // ── 8. Issue tokens ────────────────────────────────────────────────────
   const sessionId = crypto.randomUUID();
